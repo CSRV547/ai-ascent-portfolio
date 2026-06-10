@@ -110,6 +110,78 @@ function Nav() {
   );
 }
 
+const SIDEBAR_ITEMS = [
+  { id: "home", label: "Home", Icon: Home },
+  { id: "skills", label: "Skills", Icon: Layers },
+  { id: "projects", label: "Projects", Icon: FolderOpen },
+  { id: "certs", label: "Certifications", Icon: Award },
+  { id: "testimonials", label: "Testimonials", Icon: MessageSquare },
+  { id: "interests", label: "Interests", Icon: Heart },
+  { id: "contact", label: "Contact", Icon: Mail },
+];
+
+function SectionSidebar() {
+  const [active, setActive] = useState("home");
+  const [open, setOpen] = useState(true);
+  useEffect(() => {
+    const obs = new IntersectionObserver(
+      (es) => es.forEach((e) => e.isIntersecting && setActive(e.target.id)),
+      { rootMargin: "-40% 0px -55% 0px" }
+    );
+    SIDEBAR_ITEMS.forEach((n) => { const el = document.getElementById(n.id); if (el) obs.observe(el); });
+    return () => obs.disconnect();
+  }, []);
+
+  return (
+    <aside
+      className={`fixed top-24 left-4 z-40 hidden flex-col gap-1 rounded-2xl glass py-3 transition-all duration-300 lg:flex ${
+        open ? "w-48 px-3" : "w-12 px-1.5 items-center"
+      }`}
+    >
+      <button
+        onClick={() => setOpen((v) => !v)}
+        className="mb-2 flex items-center gap-2 rounded-lg px-2 py-1.5 text-xs font-mono text-muted-foreground transition hover:bg-secondary hover:text-foreground"
+        title={open ? "Collapse" : "Expand"}
+      >
+        {open ? <ChevronLeft className="h-3.5 w-3.5" /> : <ChevronRight className="h-3.5 w-3.5" />}
+        {open && <span>Sections</span>}
+      </button>
+      {SIDEBAR_ITEMS.map(({ id, label, Icon }) => {
+        const isActive = active === id;
+        return (
+          <a
+            key={id}
+            href={`#${id}`}
+            className={`group flex items-center gap-3 rounded-xl px-2.5 py-2.5 transition ${
+              isActive
+                ? "bg-secondary text-foreground"
+                : "text-muted-foreground hover:bg-secondary/60 hover:text-foreground"
+            }`}
+          >
+            <span
+              className={`grid h-7 w-7 shrink-0 place-items-center rounded-lg border transition ${
+                isActive
+                  ? "border-primary/40 bg-primary/10 text-primary"
+                  : "border-border bg-surface group-hover:border-primary/20"
+              }`}
+            >
+              <Icon className="h-3.5 w-3.5" />
+            </span>
+            {open && (
+              <span className="text-sm font-medium transition-opacity duration-200">
+                {label}
+              </span>
+            )}
+            {isActive && open && (
+              <span className="ml-auto h-1.5 w-1.5 rounded-full bg-primary animate-pulse" />
+            )}
+          </a>
+        );
+      })}
+    </aside>
+  );
+}
+
 const ROLES = [
   "AI / ML Engineer",
   "Data Engineering Specialist",
