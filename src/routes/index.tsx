@@ -40,6 +40,7 @@ function Portfolio() {
     <div className="relative min-h-screen">
       <ScanLine />
       <Nav />
+      <SectionSidebar />
       <main>
         <Hero />
         <TechTicker />
