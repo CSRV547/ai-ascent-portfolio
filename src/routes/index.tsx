@@ -496,6 +496,99 @@ const PROJECTS = [
   },
 ];
 
+const EXPERIENCE = [
+  {
+    role: "Senior AI/ML Engineer",
+    company: "Nimbus Analytics",
+    location: "Bengaluru, IN",
+    period: "2023 — Present",
+    accent: "var(--primary)",
+    blurb: "Lead ML platform engineer owning recommendation, ranking, and LLM-powered assistants for a 12M+ MAU product.",
+    bullets: [
+      "Designed a feature store + online inference stack serving 8k RPS at p99 < 90ms.",
+      "Shipped a RAG copilot reducing customer support handle time by 38%.",
+      "Mentored 5 engineers; established model evaluation, drift, and shadow-deploy standards.",
+    ],
+    stack: ["PyTorch", "Ray", "Kafka", "Feast", "Vertex AI", "Airflow"],
+  },
+  {
+    role: "Machine Learning Engineer",
+    company: "Quantia Labs",
+    location: "Hyderabad, IN",
+    period: "2021 — 2023",
+    accent: "var(--accent)",
+    blurb: "Built end-to-end ML systems for fraud, ranking, and forecasting across fintech and retail clients.",
+    bullets: [
+      "Productionised a gradient-boosted fraud model lifting recall by 23pp at fixed precision.",
+      "Migrated batch pipelines to Spark + Delta Lake, cutting cost by 41% and SLA misses to zero.",
+      "Authored MLOps blueprint adopted by 4 client engagements.",
+    ],
+    stack: ["XGBoost", "Spark", "Delta Lake", "MLflow", "AWS SageMaker"],
+  },
+  {
+    role: "Data Engineer",
+    company: "Lumen Data Co.",
+    location: "Pune, IN",
+    period: "2019 — 2021",
+    accent: "var(--chart-2, var(--primary))",
+    blurb: "Built petabyte-scale ingestion and warehousing for marketing and IoT analytics workloads.",
+    bullets: [
+      "Engineered CDC pipelines (Debezium + Kafka) replicating 200+ tables in near real-time.",
+      "Modeled a dimensional warehouse on Snowflake powering 30+ exec dashboards.",
+      "Reduced nightly ETL runtime from 6h to 45m via partitioning and clustering rewrites.",
+    ],
+    stack: ["Kafka", "Debezium", "Snowflake", "dbt", "Airflow", "Python"],
+  },
+];
+
+function Experience() {
+  return (
+    <Section id="experience" eyebrow="// career" title="Work experience" sub="Seven+ years building ML platforms and data systems that ship to real users.">
+      <ol className="relative space-y-6 before:absolute before:left-4 before:top-2 before:bottom-2 before:w-px before:bg-border md:before:left-5">
+        {EXPERIENCE.map((e) => (
+          <li key={e.role + e.company} className="relative pl-12 md:pl-16">
+            <span
+              className="absolute left-0 top-1 grid h-9 w-9 place-items-center rounded-full border border-border bg-background md:h-10 md:w-10"
+              style={{ color: e.accent }}
+            >
+              <Briefcase className="h-4 w-4" />
+            </span>
+            <article className="group rounded-2xl border border-border bg-surface/60 p-5 transition hover:border-primary/50 hover:shadow-[var(--shadow-elevated)]">
+              <div className="absolute inset-x-0 top-0 h-px" style={{ background: `linear-gradient(90deg, transparent, ${e.accent}, transparent)` }} />
+              <div className="flex flex-wrap items-start justify-between gap-3">
+                <div>
+                  <h3 className="font-display text-lg font-semibold leading-tight">{e.role}</h3>
+                  <div className="mt-1 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-muted-foreground">
+                    <span className="inline-flex items-center gap-1.5"><Building2 className="h-3.5 w-3.5" />{e.company}</span>
+                    <span className="inline-flex items-center gap-1.5"><MapPin className="h-3.5 w-3.5" />{e.location}</span>
+                  </div>
+                </div>
+                <span className="inline-flex items-center gap-1.5 rounded-full border border-border bg-background/60 px-2.5 py-1 font-mono text-[11px] text-muted-foreground">
+                  <Calendar className="h-3 w-3" />{e.period}
+                </span>
+              </div>
+              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{e.blurb}</p>
+              <ul className="mt-3 space-y-1.5">
+                {e.bullets.map((b) => (
+                  <li key={b} className="flex gap-2 text-sm text-foreground/90">
+                    <span className="mt-2 h-1 w-1 shrink-0 rounded-full" style={{ background: e.accent }} />
+                    <span>{b}</span>
+                  </li>
+                ))}
+              </ul>
+              <div className="mt-4 flex flex-wrap gap-1.5">
+                {e.stack.map((t) => (
+                  <span key={t} className="rounded-full border border-border bg-background/40 px-2 py-0.5 font-mono text-[11px] text-muted-foreground">{t}</span>
+                ))}
+              </div>
+            </article>
+          </li>
+        ))}
+      </ol>
+    </Section>
+  );
+}
+
 function Projects() {
   return (
     <Section id="projects" eyebrow="// selected work" title="Projects that shipped real impact" sub="A sampling of production systems I've designed, built, and operated end-to-end.">
