@@ -11,9 +11,9 @@ import {
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Arjun Mehta — AI/ML Engineer & Data Engineering Specialist" },
-      { name: "description", content: "Portfolio of Arjun Mehta — AI/ML engineer building production ML systems, data pipelines, and LLM-powered products at scale." },
-      { property: "og:title", content: "Arjun Mehta — AI/ML Engineer" },
+      { title: "Rohith Vignesh — AI/ML Engineer & Data Engineering Specialist" },
+      { name: "description", content: "Portfolio of Rohith Vignesh — AI/ML engineer building production ML systems, data pipelines, and LLM-powered products at scale." },
+      { property: "og:title", content: "Rohith Vignesh — AI/ML Engineer" },
       { property: "og:description", content: "Production ML, MLOps, and large-scale data engineering. Selected projects, certifications, and contact." },
     ],
     links: [
@@ -82,7 +82,7 @@ function Nav() {
             <span className="grid h-7 w-7 place-items-center rounded-md bg-[var(--gradient-primary)] text-primary-foreground">
               <Terminal className="h-4 w-4" />
             </span>
-            <span className="hidden sm:inline">arjun.mehta</span>
+            <span className="hidden sm:inline">rohith.vignesh</span>
             <span className="text-primary animate-blink">_</span>
           </a>
           <nav className="hidden items-center gap-1 md:flex">
@@ -102,7 +102,7 @@ function Nav() {
             href="#contact"
             className="inline-flex items-center gap-1.5 rounded-full bg-primary px-3.5 py-1.5 text-sm font-medium text-primary-foreground transition hover:opacity-90"
           >
-            Hire me <ArrowRight className="h-3.5 w-3.5" />
+            Hello Rohith! <ArrowRight className="h-3.5 w-3.5" />
           </a>
         </div>
       </div>
@@ -122,7 +122,7 @@ const SIDEBAR_ITEMS = [
 
 function SectionSidebar() {
   const [active, setActive] = useState("home");
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(false);
   useEffect(() => {
     const obs = new IntersectionObserver(
       (es) => es.forEach((e) => e.isIntersecting && setActive(e.target.id)),
@@ -134,18 +134,23 @@ function SectionSidebar() {
 
   return (
     <aside
+      onMouseEnter={() => setOpen(true)}
+      onMouseLeave={() => setTimeout(() => setOpen(false), 200)}
       className={`fixed top-24 left-4 z-40 hidden flex-col gap-1 rounded-2xl glass py-3 transition-all duration-300 lg:flex ${
         open ? "w-48 px-3" : "w-12 px-1.5 items-center"
       }`}
     >
       <button
-        onClick={() => setOpen((v) => !v)}
         className="mb-2 flex items-center gap-2 rounded-lg px-2 py-1.5 text-xs font-mono text-muted-foreground transition hover:bg-secondary hover:text-foreground"
-        title={open ? "Collapse" : "Expand"}
       >
-        {open ? <ChevronLeft className="h-3.5 w-3.5" /> : <ChevronRight className="h-3.5 w-3.5" />}
+        {open ? (
+          <ChevronLeft className="h-3.5 w-3.5" />
+        ) : (
+          <ChevronRight className="h-3.5 w-3.5" />
+        )}
         {open && <span>Sections</span>}
       </button>
+
       {SIDEBAR_ITEMS.map(({ id, label, Icon }) => {
         const isActive = active === id;
         return (
@@ -167,13 +172,11 @@ function SectionSidebar() {
             >
               <Icon className="h-3.5 w-3.5" />
             </span>
+
             {open && (
-              <span className="text-sm font-medium transition-opacity duration-200">
+              <span className="text-sm font-medium">
                 {label}
               </span>
-            )}
-            {isActive && open && (
-              <span className="ml-auto h-1.5 w-1.5 rounded-full bg-primary animate-pulse" />
             )}
           </a>
         );
@@ -184,9 +187,9 @@ function SectionSidebar() {
 
 const ROLES = [
   "AI / ML Engineer",
-  "Data Engineering Specialist",
-  "MLOps Practitioner",
-  "LLM Systems Builder",
+  "Data Engineer",
+  "MLOps Engineer",
+  "Senior Python Developer",
 ];
 
 function Hero() {
@@ -213,7 +216,7 @@ function Hero() {
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-60" />
               <span className="relative inline-flex h-2 w-2 rounded-full bg-primary" />
             </span>
-            Available for senior AI/ML roles · Remote / Bengaluru
+            Available for Mid Senior AI/ML roles · Remote / Bengaluru / Chennai / Hyderabad / Trivandrum
           </div>
 
           <h1 className="font-display mt-6 text-5xl font-bold leading-[1.05] tracking-tight sm:text-6xl lg:text-7xl">
@@ -230,7 +233,7 @@ function Hero() {
 
           <p className="mt-6 max-w-xl text-base text-muted-foreground sm:text-lg">
             I design and ship end-to-end ML systems — from petabyte-scale data pipelines and
-            feature stores to fine-tuned LLMs and real-time inference services. 6+ years turning
+            feature stores to fine-tuned LLMs and real-time inference services. 2+ years turning
             ambiguous business problems into measurable model impact.
           </p>
 
@@ -245,9 +248,9 @@ function Hero() {
 
           <dl className="mt-10 grid grid-cols-3 gap-4 sm:gap-8">
             {[
-              { k: "6+", v: "Years in AI/ML" },
-              { k: "40+", v: "Models in production" },
-              { k: "12PB", v: "Data orchestrated" },
+              { k: "2+", v: "Years in AI/ML" },
+              { k: "20+", v: "Models in production" },
+              { k: "12TB", v: "Data orchestrated" },
             ].map((s) => (
               <div key={s.v}>
                 <dt className="font-display text-3xl font-bold text-foreground sm:text-4xl">{s.k}</dt>
@@ -313,13 +316,13 @@ function HeroCard() {
           <span className="h-2.5 w-2.5 rounded-full bg-destructive/80" />
           <span className="h-2.5 w-2.5 rounded-full bg-yellow-500/80" />
           <span className="h-2.5 w-2.5 rounded-full bg-emerald-500/80" />
-          <span className="ml-2 text-muted-foreground">~/arjun/about</span>
+          <span className="ml-2 text-muted-foreground">~/rohith/about</span>
         </div>
         <pre className="mt-3 whitespace-pre-wrap leading-relaxed text-muted-foreground">
 <span className="text-primary">$</span> whoami
-<span className="text-foreground">arjun — ai/ml engineer · data pipelines · llm systems</span>
+<span className="text-foreground">rohith — ai/ml engineer · data pipelines · llm systems</span>
 <span className="text-primary">$</span> cat stack.json
-<span className="text-foreground">{"{"} pytorch, jax, ray, spark, airflow, kafka, dbt {"}"}</span>
+<span className="text-foreground">{"{"}YOLO, Deep/Machine learning, spark, cloud services, SQL/NoSQL DB, RAG{"}"}</span>
         </pre>
       </div>
     </div>
@@ -353,10 +356,10 @@ const SKILL_GROUPS = [
     Icon: Brain,
     color: "var(--electric)",
     skills: [
-      { name: "PyTorch / TensorFlow", level: 95 },
-      { name: "LLMs · RAG · Fine-tuning", level: 92 },
-      { name: "Computer Vision", level: 85 },
-      { name: "Time-series & Forecasting", level: 88 },
+      { name: "PyTorch / TensorFlow/ YOLO", level: 90 },
+      { name: "LLMs · RAG · Fine-tuning", level: 98 },
+      { name: "Computer Vision", level: 97 },
+      { name: "Time-series & Forecasting", level: 80 },
     ],
   },
   {
@@ -364,21 +367,10 @@ const SKILL_GROUPS = [
     Icon: Database,
     color: "var(--accent)",
     skills: [
-      { name: "Spark · Flink · Beam", level: 93 },
-      { name: "Airflow · Dagster · dbt", level: 90 },
-      { name: "Kafka · Pub/Sub · Kinesis", level: 87 },
-      { name: "Snowflake · BigQuery · Iceberg", level: 91 },
-    ],
-  },
-  {
-    title: "MLOps & Infrastructure",
-    Icon: ServerCog,
-    color: "var(--neon)",
-    skills: [
-      { name: "Kubernetes · Ray · KServe", level: 88 },
-      { name: "MLflow · Weights & Biases", level: 90 },
-      { name: "Feature Stores (Feast)", level: 84 },
-      { name: "Terraform · CI/CD", level: 86 },
+      { name: "Spark · HDFS", level: 90 },
+      { name: "Databricks · ADF", level: 80 },
+      { name: "Kafka · AirFlow", level: 60 },
+      { name: "Pandas · MongoDB", level: 98 },
     ],
   },
   {
@@ -386,10 +378,21 @@ const SKILL_GROUPS = [
     Icon: Code2,
     color: "var(--magenta)",
     skills: [
-      { name: "Python", level: 97 },
-      { name: "SQL · PL/pgSQL", level: 94 },
-      { name: "Scala · Go", level: 78 },
-      { name: "TypeScript", level: 80 },
+      { name: "Python", level: 99 },
+      { name: "SQL · NoSQL", level: 95 },
+      { name: "React · HTML/CSS · JSX", level: 60 },
+      { name: "C/C++", level: 80 },
+    ],
+  },
+  {
+    title: "MLOps & Cloud",
+    Icon: ServerCog,
+    color: "var(--neon)",
+    skills: [
+      { name: "Docker · Application Containers", level: 68 },
+      { name: "Application Deployment", level: 90 },
+      { name: "AWS Services i.e., S3, EC2, Lambda, EventBridge", level: 90 },
+      { name: "GCP Services i.e., BigQuery, Dataflow, Vertex AI, DocumentAI, Cloud Run", level: 90 },
     ],
   },
 ];
@@ -444,10 +447,10 @@ function Skills() {
 
 const PROJECTS = [
   {
-    title: "RAG-Powered Research Copilot",
+    title: "Intelligent Document Processing",
     blurb: "Domain-tuned LLM assistant ingesting 4M+ documents with hybrid search and reranking. Reduced analyst research time by 68%.",
     tags: ["LLM", "RAG", "vLLM", "Pinecone", "LangGraph"],
-    metrics: [{ k: "p95", v: "420ms" }, { k: "Recall@10", v: "0.93" }, { k: "Users", v: "1.2k" }],
+    metrics: [{ k: "Accuracy", v: "96+" }, { k: "Documents supported", v: "80+" }, { k: "Clients", v: "20+" }],
     Icon: Bot,
     accent: "var(--electric)",
   },
@@ -642,29 +645,33 @@ function Contact() {
           <ul className="mt-5 space-y-4 text-sm">
             <li className="flex items-center gap-3">
               <span className="grid h-9 w-9 place-items-center rounded-lg bg-surface-2"><Mail className="h-4 w-4 text-primary" /></span>
-              <a href="mailto:arjun@example.com" className="hover:text-primary">arjun.mehta@proton.me</a>
+              <a href="mailto:csrv547@gmail.com" className="hover:text-primary">csrv547@gmail.com</a>
             </li>
             <li className="flex items-center gap-3">
               <span className="grid h-9 w-9 place-items-center rounded-lg bg-surface-2"><Phone className="h-4 w-4 text-primary" /></span>
-              <span>+91 98xxx 12345</span>
+              <span>+91 8220537547</span>
             </li>
             <li className="flex items-center gap-3">
               <span className="grid h-9 w-9 place-items-center rounded-lg bg-surface-2"><MapPin className="h-4 w-4 text-primary" /></span>
-              <span>Bengaluru, India · Open to remote</span>
+              <span>Chennai, India · Open to remote</span>
             </li>
             <li className="flex items-center gap-3">
               <span className="grid h-9 w-9 place-items-center rounded-lg bg-surface-2"><Linkedin className="h-4 w-4 text-primary" /></span>
-              <a href="#" className="hover:text-primary">linkedin.com/in/arjunmehta</a>
+              <a href="https://www.linkedin.com/in/csrv547/" className="hover:text-primary" target="_blank" rel="noopener noreferrer">
+                https://www.linkedin.com/in/csrv547/
+              </a>
             </li>
             <li className="flex items-center gap-3">
               <span className="grid h-9 w-9 place-items-center rounded-lg bg-surface-2"><Github className="h-4 w-4 text-primary" /></span>
-              <a href="#" className="hover:text-primary">github.com/arjunmehta</a>
+              <a href="https://github.com/CSRV547" className="hover:text-primary" target="_blank" rel="noopener noreferrer">
+                github.com/csrv547
+              </a>
             </li>
           </ul>
 
           <div className="mt-7 rounded-xl border border-border bg-background/40 p-4 font-mono text-xs text-muted-foreground">
             <div><span className="text-primary">$</span> availability --next</div>
-            <div className="mt-1 text-foreground">→ accepting interviews for Q3 2026</div>
+            <div className="mt-1 text-foreground">→ Currently not available for new opportunities</div>
           </div>
         </div>
 
@@ -711,12 +718,18 @@ function Footer() {
     <footer className="border-t border-border bg-surface/40 py-8">
       <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-3 px-4 sm:flex-row">
         <p className="font-mono text-xs text-muted-foreground">
-          © {new Date().getFullYear()} Arjun Mehta · Built with intent.
+          © {new Date().getFullYear()} Rohith Vignesh · Built with intent.
         </p>
         <div className="flex items-center gap-3 text-muted-foreground">
-          <a href="#" aria-label="GitHub" className="hover:text-primary"><Github className="h-4 w-4" /></a>
-          <a href="#" aria-label="LinkedIn" className="hover:text-primary"><Linkedin className="h-4 w-4" /></a>
-          <a href="mailto:arjun.mehta@proton.me" aria-label="Email" className="hover:text-primary"><Mail className="h-4 w-4" /></a>
+          <a href="https://github.com/CSRV547" aria-label="GitHub" className="hover:text-primary" target="_blank" rel="noopener noreferrer">
+            <Github className="h-4 w-4" />
+          </a>
+          <a href="https://www.linkedin.com/in/csrv547/" aria-label="LinkedIn" className="hover:text-primary" target="_blank" rel="noopener noreferrer">
+            <Linkedin className="h-4 w-4" />
+          </a>
+          <a href="mailto:csrv547@gmail.com" aria-label="Email" className="hover:text-primary">
+            <Mail className="h-4 w-4" />
+          </a>
         </div>
       </div>
     </footer>
