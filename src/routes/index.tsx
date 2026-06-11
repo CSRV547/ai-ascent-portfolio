@@ -5,7 +5,7 @@ import {
   ExternalLink, Award, Sparkles, BookOpen, Coffee, Mountain, Music, Camera,
   ArrowRight, Quote, MapPin, Phone, Send, Terminal, Zap, LineChart, Workflow,
   Boxes, ServerCog, FlaskConical, Bot, Home, FolderOpen, Layers, MessageSquare, Heart,
-  ChevronLeft, ChevronRight,
+  ChevronLeft, ChevronRight, Briefcase, Building2, Calendar,
 } from "lucide-react";
 
 export const Route = createFileRoute("/")({
