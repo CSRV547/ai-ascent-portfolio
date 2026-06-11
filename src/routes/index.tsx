@@ -46,6 +46,7 @@ function Portfolio() {
         <Hero />
         <TechTicker />
         <Skills />
+        <Experience />
         <Projects />
         <Certifications />
         <Testimonials />
