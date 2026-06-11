@@ -28,6 +28,7 @@ export const Route = createFileRoute("/")({
 const NAV = [
   { id: "home", label: "Home" },
   { id: "skills", label: "Skills" },
+  { id: "experience", label: "Experience" },
   { id: "projects", label: "Projects" },
   { id: "certs", label: "Certifications" },
   { id: "testimonials", label: "Testimonials" },
