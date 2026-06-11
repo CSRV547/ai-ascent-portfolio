@@ -5,7 +5,7 @@ import {
   ExternalLink, Award, Sparkles, BookOpen, Coffee, Mountain, Music, Camera,
   ArrowRight, Quote, MapPin, Phone, Send, Terminal, Zap, LineChart, Workflow,
   Boxes, ServerCog, FlaskConical, Bot, Home, FolderOpen, Layers, MessageSquare, Heart,
-  ChevronLeft, ChevronRight,
+  ChevronLeft, ChevronRight, Briefcase, Building2, Calendar,
 } from "lucide-react";
 
 export const Route = createFileRoute("/")({
@@ -28,6 +28,7 @@ export const Route = createFileRoute("/")({
 const NAV = [
   { id: "home", label: "Home" },
   { id: "skills", label: "Skills" },
+  { id: "experience", label: "Experience" },
   { id: "projects", label: "Projects" },
   { id: "certs", label: "Certifications" },
   { id: "testimonials", label: "Testimonials" },
@@ -45,6 +46,7 @@ function Portfolio() {
         <Hero />
         <TechTicker />
         <Skills />
+        <Experience />
         <Projects />
         <Certifications />
         <Testimonials />
@@ -113,6 +115,7 @@ function Nav() {
 const SIDEBAR_ITEMS = [
   { id: "home", label: "Home", Icon: Home },
   { id: "skills", label: "Skills", Icon: Layers },
+  { id: "experience", label: "Experience", Icon: Briefcase },
   { id: "projects", label: "Projects", Icon: FolderOpen },
   { id: "certs", label: "Certifications", Icon: Award },
   { id: "testimonials", label: "Testimonials", Icon: MessageSquare },
@@ -445,6 +448,100 @@ function Skills() {
   );
 }
 
+
+const EXPERIENCE = [
+  {
+    role: "AI/ML Engineer",
+    company: "Nura Analytics",
+    location: "Chennai, IN",
+    period: "June 2024 — Present",
+    accent: "var(--primary)",
+    blurb: "Lead ML platform engineer owning recommendation, ranking, and LLM-powered assistants for a 12M+ MAU product.",
+    bullets: [
+      "Designed a feature store + online inference stack serving 8k RPS at p99 < 90ms.",
+      "Shipped a RAG copilot reducing customer support handle time by 38%.",
+      "Mentored 5 engineers; established model evaluation, drift, and shadow-deploy standards.",
+    ],
+    stack: ["PyTorch", "Ray", "Kafka", "Feast", "Vertex AI", "Airflow"],
+  },
+  {
+    role: "Manufacturing Engineer Trainee",
+    company: "NCR Corporation Ltd.",
+    location: "Chennai, IN",
+    period: "Feb 2023 — Aug 2023",
+    accent: "var(--accent)",
+    blurb: "Built end-to-end ML systems for fraud, ranking, and forecasting across fintech and retail clients.",
+    bullets: [
+      "Productionised a gradient-boosted fraud model lifting recall by 23pp at fixed precision.",
+      "Migrated batch pipelines to Spark + Delta Lake, cutting cost by 41% and SLA misses to zero.",
+      "Authored MLOps blueprint adopted by 4 client engagements.",
+    ],
+    stack: ["XGBoost", "Spark", "Delta Lake", "MLflow", "AWS SageMaker"],
+  },
+  // {
+  //   role: "Data Engineer",
+  //   company: "Lumen Data Co.",
+  //   location: "Pune, IN",
+  //   period: "2019 — 2021",
+  //   accent: "var(--chart-2, var(--primary))",
+  //   blurb: "Built petabyte-scale ingestion and warehousing for marketing and IoT analytics workloads.",
+  //   bullets: [
+  //     "Engineered CDC pipelines (Debezium + Kafka) replicating 200+ tables in near real-time.",
+  //     "Modeled a dimensional warehouse on Snowflake powering 30+ exec dashboards.",
+  //     "Reduced nightly ETL runtime from 6h to 45m via partitioning and clustering rewrites.",
+  //   ],
+  //   stack: ["Kafka", "Debezium", "Snowflake", "dbt", "Airflow", "Python"],
+  // },
+];
+
+function Experience() {
+  return (
+    <Section id="experience" eyebrow="// career" title="Work experience" sub="Seven+ years building ML platforms and data systems that ship to real users.">
+      <ol className="relative space-y-6 before:absolute before:left-4 before:top-2 before:bottom-2 before:w-px before:bg-border md:before:left-5">
+        {EXPERIENCE.map((e) => (
+          <li key={e.role + e.company} className="relative pl-12 md:pl-16">
+            <span
+              className="absolute left-0 top-1 grid h-9 w-9 place-items-center rounded-full border border-border bg-background md:h-10 md:w-10"
+              style={{ color: e.accent }}
+            >
+              <Briefcase className="h-4 w-4" />
+            </span>
+            <article className="group rounded-2xl border border-border bg-surface/60 p-5 transition hover:border-primary/50 hover:shadow-[var(--shadow-elevated)]">
+              <div className="absolute inset-x-0 top-0 h-px" style={{ background: `linear-gradient(90deg, transparent, ${e.accent}, transparent)` }} />
+              <div className="flex flex-wrap items-start justify-between gap-3">
+                <div>
+                  <h3 className="font-display text-lg font-semibold leading-tight">{e.role}</h3>
+                  <div className="mt-1 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-muted-foreground">
+                    <span className="inline-flex items-center gap-1.5"><Building2 className="h-3.5 w-3.5" />{e.company}</span>
+                    <span className="inline-flex items-center gap-1.5"><MapPin className="h-3.5 w-3.5" />{e.location}</span>
+                  </div>
+                </div>
+                <span className="inline-flex items-center gap-1.5 rounded-full border border-border bg-background/60 px-2.5 py-1 font-mono text-[11px] text-muted-foreground">
+                  <Calendar className="h-3 w-3" />{e.period}
+                </span>
+              </div>
+              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{e.blurb}</p>
+              <ul className="mt-3 space-y-1.5">
+                {e.bullets.map((b) => (
+                  <li key={b} className="flex gap-2 text-sm text-foreground/90">
+                    <span className="mt-2 h-1 w-1 shrink-0 rounded-full" style={{ background: e.accent }} />
+                    <span>{b}</span>
+                  </li>
+                ))}
+              </ul>
+              <div className="mt-4 flex flex-wrap gap-1.5">
+                {e.stack.map((t) => (
+                  <span key={t} className="rounded-full border border-border bg-background/40 px-2 py-0.5 font-mono text-[11px] text-muted-foreground">{t}</span>
+                ))}
+              </div>
+            </article>
+          </li>
+        ))}
+      </ol>
+    </Section>
+  );
+}
+
 const PROJECTS = [
   {
     title: "Intelligent Document Processing",
@@ -636,6 +733,67 @@ function Interests() {
   );
 }
 
+import { toast } from "sonner";
+
+const handleSubmit = async (
+  e: React.FormEvent<HTMLFormElement>
+) => {
+  e.preventDefault();
+
+  const form = e.currentTarget;
+  const formData = new FormData(form);
+
+  const loadingToast = toast.loading(
+    "Sending message..."
+  );
+
+  try {
+    const response = await fetch(
+      "https://formspree.io/f/maqzdapj",
+      {
+        method: "POST",
+        body: formData,
+        headers: {
+          Accept: "application/json",
+        },
+      }
+    );
+
+    toast.dismiss(loadingToast);
+
+    if (response.ok) {
+      toast.success(
+        "Message sent successfully!",
+        {
+          description:
+            "Thanks for reaching out. I'll get back to you soon.",
+        }
+      );
+
+      form.reset();
+    } else {
+      toast.error(
+        "Failed to send message",
+        {
+          description:
+            "Please try again or contact me directly via email.",
+        }
+      );
+    }
+  } catch (error) {
+    toast.dismiss(loadingToast);
+
+    toast.error(
+      "Something went wrong",
+      {
+        description:
+          "Unable to send your message right now.",
+      }
+    );
+  }
+};
+
+
 function Contact() {
   return (
     <Section id="contact" eyebrow="// let's talk" title="Have a hard ML problem?" sub="I'm open to senior IC roles, staff-level ML engineering, and selective consulting.">
@@ -645,7 +803,7 @@ function Contact() {
           <ul className="mt-5 space-y-4 text-sm">
             <li className="flex items-center gap-3">
               <span className="grid h-9 w-9 place-items-center rounded-lg bg-surface-2"><Mail className="h-4 w-4 text-primary" /></span>
-              <a href="mailto:csrv547@gmail.com" className="hover:text-primary">csrv547@gmail.com</a>
+              <a href="mailto:rohithvignesh.c@gmail.com" className="hover:text-primary">rohithvignesh.c@gmail.com</a>
             </li>
             <li className="flex items-center gap-3">
               <span className="grid h-9 w-9 place-items-center rounded-lg bg-surface-2"><Phone className="h-4 w-4 text-primary" /></span>
@@ -676,26 +834,74 @@ function Contact() {
         </div>
 
         <form
-          className="glass rounded-2xl p-7"
-          onSubmit={(e) => { e.preventDefault(); alert("Thanks! I'll get back to you within 24h."); }}
-        >
-          <div className="grid gap-4 sm:grid-cols-2">
-            <Field label="Name" name="name" placeholder="Jane Doe" />
-            <Field label="Email" name="email" type="email" placeholder="jane@company.com" />
-          </div>
-          <Field label="Company / role" name="company" placeholder="Acme · Engineering Manager" className="mt-4" />
-          <div className="mt-4">
-            <label className="mb-1.5 block font-mono text-xs uppercase tracking-wider text-muted-foreground">Message</label>
-            <textarea
-              required rows={5}
-              placeholder="Tell me a bit about the problem you're solving…"
-              className="w-full rounded-lg border border-border bg-background/60 px-3.5 py-2.5 text-sm outline-none transition focus:border-primary focus:ring-2 focus:ring-primary/30"
+            onSubmit={handleSubmit}
+            className="glass rounded-2xl p-7"
+          >
+            <div className="grid gap-4 sm:grid-cols-2">
+              <Field
+                label="Name"
+                name="name"
+                placeholder="Jane Doe"
+              />
+
+              <Field
+                label="Email"
+                name="email"
+                type="email"
+                placeholder="jane@company.com"
+              />
+            </div>
+
+            <Field
+              label="Company / Role"
+              name="company"
+              placeholder="Acme · Engineering Manager"
+              className="mt-4"
             />
-          </div>
-          <button type="submit" className="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-lg bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground shadow-[var(--shadow-glow)] transition hover:translate-y-[-1px]">
-            Send message <Send className="h-4 w-4" />
-          </button>
-        </form>
+
+            <div className="mt-4">
+              <label className="mb-1.5 block font-mono text-xs uppercase tracking-wider text-muted-foreground">
+                Message
+              </label>
+
+              <textarea
+                required
+                name="message"
+                rows={5}
+                placeholder="Tell me a bit about the problem you're solving…"
+                className="w-full rounded-lg border border-border bg-background/60 px-3.5 py-2.5 text-sm outline-none transition focus:border-primary focus:ring-2 focus:ring-primary/30"
+              />
+            </div>
+
+            {/* Optional email subject */}
+            <input
+              type="hidden"
+              name="_subject"
+              value="New Portfolio Contact Request"
+            />
+
+            <button
+              type="submit"
+              className="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-lg bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground shadow-[var(--shadow-glow)] transition hover:translate-y-[-1px]"
+            >
+              Send Message
+              <Send className="h-4 w-4" />
+            </button>
+          </form>
+
+          {/* If you want a success message without leaving the page:
+
+          <form
+            action="https://formspree.io/f/maqzdapj"
+            method="POST"
+          >
+            ...
+            <input
+              type="hidden"
+              name="_next"
+              value="https://rohithvignesh-portfolio.vercel.app/?success=true"
+            />
+          </form> */}
       </div>
     </Section>
   );
@@ -727,7 +933,7 @@ function Footer() {
           <a href="https://www.linkedin.com/in/csrv547/" aria-label="LinkedIn" className="hover:text-primary" target="_blank" rel="noopener noreferrer">
             <Linkedin className="h-4 w-4" />
           </a>
-          <a href="mailto:csrv547@gmail.com" aria-label="Email" className="hover:text-primary">
+          <a href="mailto:rohithvignesh.c@gmail.com" aria-label="Email" className="hover:text-primary">
             <Mail className="h-4 w-4" />
           </a>
         </div>
