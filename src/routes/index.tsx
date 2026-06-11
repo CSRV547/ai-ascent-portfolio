@@ -115,6 +115,7 @@ function Nav() {
 const SIDEBAR_ITEMS = [
   { id: "home", label: "Home", Icon: Home },
   { id: "skills", label: "Skills", Icon: Layers },
+  { id: "experience", label: "Experience", Icon: Briefcase },
   { id: "projects", label: "Projects", Icon: FolderOpen },
   { id: "certs", label: "Certifications", Icon: Award },
   { id: "testimonials", label: "Testimonials", Icon: MessageSquare },
