@@ -6,6 +6,13 @@ import {
   ArrowRight, Quote, MapPin, Phone, Send, Terminal, Zap, LineChart, Workflow,
   Boxes, ServerCog, FlaskConical, Bot, Home, FolderOpen, Layers, MessageSquare, Heart,
   ChevronLeft, ChevronRight, Briefcase, Building2, Calendar,
+  FileArchive,
+  FileSearch,
+  BrainCircuit,
+  GraduationCap,
+  Popcorn,
+  Car,
+  Trophy,
 } from "lucide-react";
 
 export const Route = createFileRoute("/")({
@@ -235,7 +242,7 @@ function Hero() {
           </div>
 
           <p className="mt-6 max-w-xl text-base text-muted-foreground sm:text-lg">
-            I design and ship end-to-end ML systems — from petabyte-scale data pipelines and
+            I design and ship end-to-end ML systems — from Terrabyte-scale data pipelines and
             feature stores to fine-tuned LLMs and real-time inference services. 2+ years turning
             ambiguous business problems into measurable model impact.
           </p>
@@ -252,8 +259,8 @@ function Hero() {
           <dl className="mt-10 grid grid-cols-3 gap-4 sm:gap-8">
             {[
               { k: "2+", v: "Years in AI/ML" },
-              { k: "20+", v: "Models in production" },
-              { k: "12TB", v: "Data orchestrated" },
+              { k: "10+", v: "Models in production" },
+              { k: "6TB", v: "Data orchestrated" },
             ].map((s) => (
               <div key={s.v}>
                 <dt className="font-display text-3xl font-bold text-foreground sm:text-4xl">{s.k}</dt>
@@ -333,10 +340,13 @@ function HeroCard() {
 }
 
 const TICKER = [
-  "PyTorch", "TensorFlow", "JAX", "Hugging Face", "LangChain", "vLLM",
-  "Apache Spark", "Airflow", "Kafka", "Flink", "dbt", "Snowflake",
-  "BigQuery", "Databricks", "Ray", "MLflow", "Weights & Biases", "Kubeflow",
-  "Docker", "Kubernetes", "Terraform", "AWS", "GCP", "Azure",
+  "Python", "Data Engineering", "PySpark", "Apache Spark",
+  "AWS", "AWS EMR", "Lambda", "EventBridge", "Amazon S3",
+  "Google Cloud", "BigQuery", "Docker",
+  "Generative AI", "LLMs", "OpenAI", "Gemini",
+  "Claude", "Amazon Bedrock", "RAG", "Multi-Agent AI",
+  "Elasticsearch", "PaddleOCR", "YOLO", "Computer Vision",
+  "Salesforce", "REST APIs", "Cloud Architecture","Databricks","ETL Pipelines"
 ];
 
 function TechTicker() {
@@ -355,14 +365,14 @@ function TechTicker() {
 
 const SKILL_GROUPS = [
   {
-    title: "AI / Machine Learning",
+    title: "AI & Generative AI",
     Icon: Brain,
     color: "var(--electric)",
     skills: [
-      { name: "PyTorch / TensorFlow/ YOLO", level: 90 },
-      { name: "LLMs · RAG · Fine-tuning", level: 98 },
-      { name: "Computer Vision", level: 97 },
-      { name: "Time-series & Forecasting", level: 80 },
+      { name: "LLMs · RAG · Multi-Agent AI", level: 97 },
+      { name: "OCR · PaddleOCR · Tesseract · GCV", level: 96 },
+      { name: "Computer Vision · YOLO", level: 95 },
+      { name: "OpenAI · Gemini · Claude · Bedrock", level: 94 },
     ],
   },
   {
@@ -370,32 +380,32 @@ const SKILL_GROUPS = [
     Icon: Database,
     color: "var(--accent)",
     skills: [
-      { name: "Spark · HDFS", level: 90 },
-      { name: "Databricks · ADF", level: 80 },
-      { name: "Kafka · AirFlow", level: 60 },
-      { name: "Pandas · MongoDB", level: 98 },
+      { name: "PySpark · Apache Spark · AWS EMR", level: 95 },
+      { name: "BigQuery · SQL · ETL Pipelines", level: 94 },
+      { name: "Pandas · NumPy · Data Processing", level: 97 },
+      { name: "Salesforce Integration · REST · Bulk API", level: 94 },
     ],
   },
   {
-    title: "Languages & Tools",
+    title: "Programming",
     Icon: Code2,
     color: "var(--magenta)",
     skills: [
       { name: "Python", level: 99 },
-      { name: "SQL · NoSQL", level: 95 },
-      { name: "React · HTML/CSS · JSX", level: 60 },
-      { name: "C/C++", level: 80 },
+      { name: "SQL · BigQuery SQL", level: 96 },
+      { name: "JavaScript · React · Streamlit", level: 70 },
+      { name: "Flask · FastAPI · REST APIs", level: 92 },
     ],
   },
   {
-    title: "MLOps & Cloud",
+    title: "Cloud & Architecture",
     Icon: ServerCog,
     color: "var(--neon)",
     skills: [
-      { name: "Docker · Application Containers", level: 68 },
-      { name: "Application Deployment", level: 90 },
-      { name: "AWS Services i.e., S3, EC2, Lambda, EventBridge", level: 90 },
-      { name: "GCP Services i.e., BigQuery, Dataflow, Vertex AI, DocumentAI, Cloud Run", level: 90 },
+      { name: "AWS (S3, Lambda, EMR, SQS, EventBridge)", level: 95 },
+      { name: "GCP (BigQuery, Cloud Run, Vertex AI)", level: 92 },
+      { name: "Docker · Linux · Git", level: 88 },
+      { name: "Scalable APIs · Cloud Architecture", level: 94 },
     ],
   },
 ];
@@ -451,87 +461,199 @@ function Skills() {
 
 const EXPERIENCE = [
   {
-    role: "AI/ML Engineer",
     company: "Nura Analytics",
     location: "Chennai, IN",
-    period: "June 2024 — Present",
+    totalDuration: "2 yrs 1 mos",
     accent: "var(--primary)",
-    blurb: "Lead ML platform engineer owning recommendation, ranking, and LLM-powered assistants for a 12M+ MAU product.",
-    bullets: [
-      "Designed a feature store + online inference stack serving 8k RPS at p99 < 90ms.",
-      "Shipped a RAG copilot reducing customer support handle time by 38%.",
-      "Mentored 5 engineers; established model evaluation, drift, and shadow-deploy standards.",
+    roles: [
+      {
+        role: "AI/ML Engineer",
+        period: "Jan 2025 — Present",
+        blurb: "Specialized in cloud data engineering, large-scale data migrations, distributed processing, Salesforce integrations, and multi-agent LLM solutions for intelligent document extraction.",
+        bullets: [
+          "Designed and implemented scalable cloud-based data pipelines to handle high-volume data and file processing across enterprise systems.",
+          "Built strong expertise in distributed data processing using PySpark and AWS EMR clusters, optimizing large-scale data transformation workflows.",
+          "Developed secure and reliable cloud storage pipelines using Amazon S3 for staging, backup, and downstream system integrations.",
+          "Integrated enterprise applications with Salesforce CRM using REST APIs and Salesforce Bulk API, enabling large-scale insert, update, and upsert operations.",
+          "Collaborated with cross-functional teams to ensure data quality, accurate record mapping, and successful enterprise data migrations.",
+          "Gained hands-on experience in cloud infrastructure configuration, large dataset processing, and enterprise data integration architectures.",
+          "Implemented document intelligence solutions using Google Document AI to parse and extract transaction tables from bank statements.",
+          "Built AI-powered extraction pipelines using Gemini, AWS Bedrock models, and OpenAI to accurately extract transaction details from unstructured bank statements, including scanned images and documents without table structures.",
+          "Developed expertise in designing multi-agent LLM architectures and orchestration workflows with hands-on experience in Gemini, OpenAI, and AWS Bedrock models (Claude, Llama, Nova) for document understanding and intelligent data extraction."
+        ],
+        stack: [
+  "Python",
+  "PySpark",
+  "AWS",
+  "Amazon EMR",
+  "Amazon S3",
+  "Salesforce",
+  "Salesforce",
+  "OCR",
+  "Google Document AI",
+  "Generative AI",
+  "OpenAI",
+  "Gemini",
+  "AWS Bedrock",
+  "Claude",
+  "Llama",
+  "Nova",
+  "LLM Orchestration",
+  "Multi-Agent AI Systems",
+  "Data Engineering",
+  "ETL Pipelines",
+  "Enterprise Data Migration",
+  "REST APIs",
+  "Cloud Architecture"
+],
+      },
+      {
+        role: "Data Analytics Intern",
+        period: "Jun 2024 — Dec 2024",
+        blurb: "Built scalable AI and cloud-based automation solutions using Python, OCR, LLMs, vector databases, and machine learning to streamline document processing, data retrieval, and business operations.",
+        bullets: [
+          "Developed an automated mailroom system for document processing.",
+          "Utilized OCR technology to extract data from documents and staged the extracted information into SQL databases.",
+          "Managed files and resources using Google Cloud Platform (GCP), containerized the application, and deployed it via GCP Cloud Run.",
+          "Built a chatbot integrated with SQL and Vector Databases (such as ChromaDB, Elasticsearch, and FAISS) to retrieve data dynamically.",
+          "Worked with Large Language Models (LLMs), including OpenAI and LLaMA, for enhanced data processing and chatbot interactions.",
+          "Led backend development using Python for processing logic, API handling, and data management.",
+          "Created a Flask application with a background scheduler to automate file processing, optimizing compute resources for the entire project lifecycle.",
+          "Trained machine learning models tailored to business requirements using frameworks like scikit-learn, TensorFlow, and YOLO."
+        ],
+        stack: ["Python","Flask","OCR","OpenAI","LLaMA","ChromaDB","FAISS","Elasticsearch","SQL","TensorFlow","YOLO","GCP","Docker"],
+      },
     ],
-    stack: ["PyTorch", "Ray", "Kafka", "Feast", "Vertex AI", "Airflow"],
   },
-  {
-    role: "Manufacturing Engineer Trainee",
+    {
     company: "NCR Corporation Ltd.",
     location: "Chennai, IN",
-    period: "Feb 2023 — Aug 2023",
+    totalDuration: "6 mos",
     accent: "var(--accent)",
-    blurb: "Built end-to-end ML systems for fraud, ranking, and forecasting across fintech and retail clients.",
-    bullets: [
-      "Productionised a gradient-boosted fraud model lifting recall by 23pp at fixed precision.",
-      "Migrated batch pipelines to Spark + Delta Lake, cutting cost by 41% and SLA misses to zero.",
-      "Authored MLOps blueprint adopted by 4 client engagements.",
+    roles: [
+      {
+        role: "Manufacturing Engineer Trainee",
+        period: "Feb 2023 — Jul 2023",
+        blurb: "Supported manufacturing operations, process optimization, and quality improvement initiatives within a high-volume production environment.",
+        bullets: [
+          "Worked on production planning and quality assurance activities.",
+          "Assisted in process optimization and operational improvements.",
+          "Collaborated with cross-functional teams on manufacturing projects.",
+        ],
+        stack: [
+          "Lean Manufacturing",
+          "Quality Control",
+          "Process Improvement",
+          "Production Planning",
+          "Operations Management"
+        ],
+      },
     ],
-    stack: ["XGBoost", "Spark", "Delta Lake", "MLflow", "AWS SageMaker"],
   },
-  // {
-  //   role: "Data Engineer",
-  //   company: "Lumen Data Co.",
-  //   location: "Pune, IN",
-  //   period: "2019 — 2021",
-  //   accent: "var(--chart-2, var(--primary))",
-  //   blurb: "Built petabyte-scale ingestion and warehousing for marketing and IoT analytics workloads.",
-  //   bullets: [
-  //     "Engineered CDC pipelines (Debezium + Kafka) replicating 200+ tables in near real-time.",
-  //     "Modeled a dimensional warehouse on Snowflake powering 30+ exec dashboards.",
-  //     "Reduced nightly ETL runtime from 6h to 45m via partitioning and clustering rewrites.",
-  //   ],
-  //   stack: ["Kafka", "Debezium", "Snowflake", "dbt", "Airflow", "Python"],
-  // },
 ];
 
 function Experience() {
   return (
-    <Section id="experience" eyebrow="// career" title="Work experience" sub="Seven+ years building ML platforms and data systems that ship to real users.">
+    <Section
+      id="experience"
+      eyebrow="// career"
+      title="Work experience"
+      sub="Building enterprise software, AI solutions, and data systems that solve real business problems."
+    >
       <ol className="relative space-y-6 before:absolute before:left-4 before:top-2 before:bottom-2 before:w-px before:bg-border md:before:left-5">
         {EXPERIENCE.map((e) => (
-          <li key={e.role + e.company} className="relative pl-12 md:pl-16">
+          <li
+            key={e.company}
+            className="relative pl-12 md:pl-16"
+          >
             <span
               className="absolute left-0 top-1 grid h-9 w-9 place-items-center rounded-full border border-border bg-background md:h-10 md:w-10"
               style={{ color: e.accent }}
             >
               <Briefcase className="h-4 w-4" />
             </span>
-            <article className="group rounded-2xl border border-border bg-surface/60 p-5 transition hover:border-primary/50 hover:shadow-[var(--shadow-elevated)]">
-              <div className="absolute inset-x-0 top-0 h-px" style={{ background: `linear-gradient(90deg, transparent, ${e.accent}, transparent)` }} />
-              <div className="flex flex-wrap items-start justify-between gap-3">
-                <div>
-                  <h3 className="font-display text-lg font-semibold leading-tight">{e.role}</h3>
-                  <div className="mt-1 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-muted-foreground">
-                    <span className="inline-flex items-center gap-1.5"><Building2 className="h-3.5 w-3.5" />{e.company}</span>
-                    <span className="inline-flex items-center gap-1.5"><MapPin className="h-3.5 w-3.5" />{e.location}</span>
-                  </div>
+
+            <article className="group relative rounded-2xl border border-border bg-surface/60 p-5 transition hover:border-primary/50 hover:shadow-[var(--shadow-elevated)]">
+              <div
+                className="absolute inset-x-0 top-0 h-px"
+                style={{
+                  background: `linear-gradient(90deg, transparent, ${e.accent}, transparent)`,
+                }}
+              />
+
+              {/* Company Header */}
+              <div>
+                <div className="flex flex-wrap items-center gap-2">
+                  <span className="inline-flex items-center gap-1.5 font-semibold text-foreground">
+                    <Building2 className="h-4 w-4" />
+                    {e.company}
+                  </span>
+
+                  <span className="text-sm font-medium text-primary">
+                    · {e.totalDuration}
+                  </span>
                 </div>
-                <span className="inline-flex items-center gap-1.5 rounded-full border border-border bg-background/60 px-2.5 py-1 font-mono text-[11px] text-muted-foreground">
-                  <Calendar className="h-3 w-3" />{e.period}
-                </span>
+
+                <div className="mt-1 inline-flex items-center gap-1.5 text-sm text-muted-foreground">
+                  <MapPin className="h-3.5 w-3.5" />
+                  {e.location}
+                </div>
               </div>
-              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{e.blurb}</p>
-              <ul className="mt-3 space-y-1.5">
-                {e.bullets.map((b) => (
-                  <li key={b} className="flex gap-2 text-sm text-foreground/90">
-                    <span className="mt-2 h-1 w-1 shrink-0 rounded-full" style={{ background: e.accent }} />
-                    <span>{b}</span>
-                  </li>
-                ))}
-              </ul>
-              <div className="mt-4 flex flex-wrap gap-1.5">
-                {e.stack.map((t) => (
-                  <span key={t} className="rounded-full border border-border bg-background/40 px-2 py-0.5 font-mono text-[11px] text-muted-foreground">{t}</span>
+
+              {/* Roles */}
+              <div className="mt-5">
+                {e.roles?.map((role, idx) => (
+                  <div
+                    key={role.role}
+                    className={
+                      idx > 0
+                        ? "mt-6 border-t border-border pt-6"
+                        : ""
+                    }
+                  >
+                    <div className="flex flex-wrap items-start justify-between gap-3">
+                      <h3 className="font-display text-lg font-semibold leading-tight">
+                        {role.role}
+                      </h3>
+
+                      <span className="inline-flex items-center gap-1.5 rounded-full border border-border bg-background/60 px-2.5 py-1 font-mono text-[11px] text-muted-foreground">
+                        <Calendar className="h-3 w-3" />
+                        {role.period}
+                      </span>
+                    </div>
+
+                    <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                      {role.blurb}
+                    </p>
+
+                    <ul className="mt-3 space-y-1.5">
+                      {role.bullets.map((b) => (
+                        <li
+                          key={b}
+                          className="flex gap-2 text-sm text-foreground/90"
+                        >
+                          <span
+                            className="mt-2 h-1 w-1 shrink-0 rounded-full"
+                            style={{
+                              background: e.accent,
+                            }}
+                          />
+                          <span>{b}</span>
+                        </li>
+                      ))}
+                    </ul>
+
+                    <div className="mt-4 flex flex-wrap gap-1.5">
+                      {role.stack.map((t) => (
+                        <span
+                          key={t}
+                          className="rounded-full border border-border bg-background/40 px-2 py-0.5 font-mono text-[11px] text-muted-foreground"
+                        >
+                          {t}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
                 ))}
               </div>
             </article>
@@ -544,67 +666,107 @@ function Experience() {
 
 const PROJECTS = [
   {
-    title: "Intelligent Document Processing",
-    blurb: "Domain-tuned LLM assistant ingesting 4M+ documents with hybrid search and reranking. Reduced analyst research time by 68%.",
-    tags: ["LLM", "RAG", "vLLM", "Pinecone", "LangGraph"],
-    metrics: [{ k: "Accuracy", v: "96+" }, { k: "Documents supported", v: "80+" }, { k: "Clients", v: "20+" }],
-    Icon: Bot,
-    accent: "var(--electric)",
+  title: "Intelligent Document Processing & RAG Platform",
+  blurb: "Engineered an AI-powered Intelligent Document Processing (IDP) platform for a leading Indian financial services company to extract structured data from diverse document formats using OCR, custom computer vision models, and LLMs. Developed in-house YOLO models to detect signatures, seals, photographs, stamps, and thumb impressions, improving document validation accuracy. Built a Retrieval-Augmented Generation (RAG) system with Elasticsearch for semantic document retrieval, enabling instant information access and automating loan processing workflows. The solution reduced manual approval effort by 65% and increased document processing throughput by 200%.",
+  tags: [
+    "Python",
+    "PaddleOCR",
+    "Tesseract",
+    "Google Vision AI",
+    "YOLO",
+    "Computer Vision",
+    "OpenAI",
+    "Gemini",
+    "Claude",
+    "Amazon Bedrock",
+    "RAG",
+    "Elasticsearch"
+  ],
+  metrics: [
+    { k: "Automation", v: "65%" },
+    { k: "Throughput", v: "+200%" },
+    { k: "Custom AI", v: "YOLO" }
+  ],
+  Icon: FileSearch,
+  accent: "var(--emerald)",
+},
+    {
+  title: "GenBI Multi-Agent Analytics Platform",
+  blurb: "Built an enterprise GenBI assistant for one of Saudi Arabia's largest real estate companies, enabling natural language analytics over BigQuery. Designed a multi-agent architecture powered by Gemini and OpenAI models to validate user queries, identify relevant schemas, generate optimized BigQuery SQL, create interactive charts and KPIs, and deliver business insights with automated summaries.",
+  tags: [
+    "Python",
+    "Gemini",
+    "OpenAI",
+    "BigQuery",
+    "GCP",
+    "Multi-Agent AI",
+    "LLM",
+    "Data Analytics"
+  ],
+  metrics: [
+    { k: "LLMs", v: "Gemini + OpenAI" },
+    { k: "Platform", v: "GCP" },
+    { k: "Agents", v: "5+" }
+  ],
+  Icon: Bot,
+  accent: "var(--purple)",
   },
   {
-    title: "Real-time Fraud Detection Pipeline",
-    blurb: "Streaming feature store + gradient boosting served on Kafka with sub-100ms inference. Saved $4.2M in disputed charges in Q1.",
-    tags: ["Kafka", "Flink", "Feast", "XGBoost", "KServe"],
-    metrics: [{ k: "TPS", v: "38k" }, { k: "AUC", v: "0.974" }, { k: "Latency", v: "84ms" }],
-    Icon: Zap,
-    accent: "var(--neon)",
-  },
+  title: "Nationalised Bank Data Migration",
+  blurb: "Built a large-scale AWS EMR (PySpark) data migration pipeline to process 1TB of banking data from Amazon S3, perform customer-specific transformations, and migrate records into Salesforce using REST and Bulk APIs with high-throughput batch processing.",
+  tags: ["AWS EMR", "PySpark", "Amazon S3", "Salesforce", "REST API", "Bulk API"],
+  metrics: [
+    { k: "Data", v: "1TB+" },
+    { k: "Platform", v: "AWS" },
+    { k: "Target", v: "Salesforce" }
+  ],
+  Icon: Database,
+  accent: "var(--neon)",
+},
   {
-    title: "Lakehouse Migration · 12PB",
-    blurb: "Re-architected legacy Hadoop warehouse to Iceberg + dbt on Databricks. Cut storage cost 41% and query times 6x.",
-    tags: ["Iceberg", "dbt", "Spark", "Databricks", "Terraform"],
-    metrics: [{ k: "Cost", v: "−41%" }, { k: "Queries", v: "6× faster" }, { k: "Tables", v: "2,400" }],
-    Icon: Database,
-    accent: "var(--accent)",
-  },
-  {
-    title: "Forecasting Platform for Retail",
-    blurb: "Hierarchical demand forecasting across 18k SKUs using Temporal Fusion Transformers, served via Ray Serve.",
-    tags: ["PyTorch", "TFT", "Ray Serve", "MLflow", "Airflow"],
-    metrics: [{ k: "WAPE", v: "−22%" }, { k: "SKUs", v: "18k" }, { k: "Refresh", v: "hourly" }],
-    Icon: LineChart,
-    accent: "var(--magenta)",
-  },
-  {
-    title: "LLM Eval & Guardrails Framework",
-    blurb: "Internal harness for evaluating prompt versions across hallucination, toxicity, and factuality with offline + online metrics.",
-    tags: ["LangSmith", "DeepEval", "Pytest", "Prometheus"],
-    metrics: [{ k: "Suites", v: "120" }, { k: "Saved hrs/wk", v: "60+" }, { k: "Adoption", v: "8 teams" }],
-    Icon: FlaskConical,
-    accent: "var(--electric)",
-  },
-  {
-    title: "Vector Search at Scale",
-    blurb: "Designed a billion-scale ANN index using FAISS + HNSW with sharded GPU serving. Powers semantic search in 5 products.",
-    tags: ["FAISS", "HNSW", "Triton", "CUDA", "Go"],
-    metrics: [{ k: "Vectors", v: "1.4B" }, { k: "QPS", v: "12k" }, { k: "p99", v: "60ms" }],
-    Icon: Boxes,
-    accent: "var(--neon)",
-  },
+  title: "Enterprise File Migration to Salesforce",
+  blurb: "Developed a Python-based file migration solution for India's largest automobile manufacturer to migrate and link over 4TB of business documents from on-premises client servers to Salesforce. Automated file uploads and record associations using Salesforce REST APIs, enabling seamless access to repair orders, invoices, and other service documents.",
+  tags: [
+    "Python",
+    "Salesforce",
+    "REST API",
+    "File Migration",
+    "Data Integration",
+    "Automation"
+  ],
+  metrics: [
+    { k: "Storage", v: "4TB+" },
+    { k: "Platform", v: "Salesforce" },
+    { k: "Documents", v: "Repair Orders & Invoices" }
+  ],
+  Icon: FileArchive,
+  accent: "var(--primary)",
+},
 ];
+
+const PROJECT_COLUMNS = 2;
+
+const PROJECT_GRID_CLASS = {
+  1: "md:grid-cols-1",
+  2: "md:grid-cols-1 lg:grid-cols-2",
+  3: "md:grid-cols-1 lg:grid-cols-3",
+  4: "md:grid-cols-1 lg:grid-cols-4",
+}[PROJECT_COLUMNS];
 
 function Projects() {
   return (
     <Section id="projects" eyebrow="// selected work" title="Projects that shipped real impact" sub="A sampling of production systems I've designed, built, and operated end-to-end.">
-      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+      <div className={`grid gap-6 ${PROJECT_GRID_CLASS}`}>
         {PROJECTS.map((p) => (
           <article key={p.title} className="group relative overflow-hidden rounded-2xl border border-border bg-surface/60 p-6 transition hover:border-primary/50 hover:shadow-[var(--shadow-elevated)]">
             <div className="absolute inset-x-0 top-0 h-px" style={{ background: `linear-gradient(90deg, transparent, ${p.accent}, transparent)` }} />
-            <div className="flex items-center justify-between">
-              <span className="grid h-11 w-11 place-items-center rounded-lg border border-border bg-background/60" style={{ color: p.accent }}>
+            <div className="flex items-center">
+              <span
+                className="grid h-11 w-11 place-items-center rounded-lg border border-border bg-background/60"
+                style={{ color: p.accent }}
+              >
                 <p.Icon className="h-5 w-5" />
               </span>
-              <ExternalLink className="h-4 w-4 text-muted-foreground transition group-hover:text-primary group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
             </div>
             <h3 className="font-display mt-5 text-lg font-semibold leading-snug">{p.title}</h3>
             <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{p.blurb}</p>
@@ -630,29 +792,72 @@ function Projects() {
   );
 }
 
+import databricksLogo from "../certs/databricks.jpg";
+import iitmLogo from "../certs/iitm.jpg";
+import guviLogo from "../certs/guvi.jpg";
+
 const CERTS = [
-  { name: "AWS Certified Machine Learning — Specialty", issuer: "Amazon Web Services", year: "2024" },
-  { name: "Google Professional Data Engineer", issuer: "Google Cloud", year: "2024" },
-  { name: "Databricks Certified ML Professional", issuer: "Databricks", year: "2023" },
-  { name: "TensorFlow Developer Certificate", issuer: "Google", year: "2022" },
-  { name: "Deep Learning Specialization", issuer: "DeepLearning.AI", year: "2021" },
-  { name: "Confluent Certified Developer — Kafka", issuer: "Confluent", year: "2023" },
-];
+  {
+    name: "Databricks Certified Associate: Data Engineer",
+    issuer: "GUVI & IITM Pravartak Technologies Foundations",
+    year: "2025",
+    link: "https://credentials.databricks.com/f71c5dc9-3c76-4d57-8c45-2e4227e2a5f9",
+    logo: databricksLogo
+  },
+  {
+    name: "Certified Professional in Advanced Programming",
+    issuer: "GUVI & IITM Pravartak Technologies Foundations",
+    year: "2024",
+    link: "https://digitalskills.iitmpravartak.org.in/verify/cert/45171qG101C2m51105",
+    logo: iitmLogo
+  },
+  {
+    name: "Master Data Science Program",
+    issuer: "Guvi Geeks Network",
+    year: "2024",
+    link: "https://www.guvi.in/share-certificate/45171qG101C2m51105",
+    logo: guviLogo
+  },
+]
 
 function Certifications() {
   return (
-    <Section id="certs" eyebrow="// credentials" title="Certifications" sub="Continuous learning across cloud, data, and modern ML.">
+    <Section
+      id="certs"
+      eyebrow="// credentials"
+      title="Certifications"
+      sub="Continuous learning across cloud, data, and modern ML."
+    >
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {CERTS.map((c) => (
-          <div key={c.name} className="glass flex items-start gap-4 rounded-xl p-5 transition hover:border-primary/40">
-            <span className="grid h-11 w-11 shrink-0 place-items-center rounded-lg bg-[var(--gradient-primary)] text-primary-foreground">
-              <Award className="h-5 w-5" />
+          <a
+            key={c.name}
+            href={c.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group glass relative flex items-start gap-4 rounded-xl p-5 transition hover:border-primary/40 hover:shadow-[var(--shadow-elevated)]"
+          >
+            <span className="grid h-11 w-11 shrink-0 place-items-center overflow-hidden rounded-lg border border-border bg-white p-1">
+              <img
+                src={c.logo}
+                alt={c.issuer}
+                className="h-full w-full object-contain"
+              />
             </span>
-            <div className="min-w-0">
-              <h3 className="font-display text-sm font-semibold leading-snug">{c.name}</h3>
-              <p className="mt-1 text-xs text-muted-foreground">{c.issuer} · <span className="font-mono">{c.year}</span></p>
+
+            <div className="min-w-0 flex-1">
+              <h3 className="font-display text-sm font-semibold leading-snug">
+                {c.name}
+              </h3>
+
+              <p className="mt-1 text-xs text-muted-foreground">
+                {c.issuer} ·{" "}
+                <span className="font-mono">{c.year}</span>
+              </p>
             </div>
-          </div>
+
+            <ExternalLink className="h-4 w-4 text-muted-foreground transition group-hover:text-primary group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+          </a>
         ))}
       </div>
     </Section>
@@ -660,31 +865,52 @@ function Certifications() {
 }
 
 const TESTIMONIALS = [
+{
+  quote: "Rohith consistently exceeded expectations with his ability to bridge business needs and data engineering solutions. He quickly grasped complex requirements, designed scalable data pipelines, and delivered reliable outcomes that aligned perfectly with business objectives. Working with him across three consecutive projects has been an outstanding experience.",
+  name: "Shivangi Mishra",
+  role: "Vice President, SaaS Platform",
+},
+{
+  quote: "Rohith played a pivotal role in transforming our loan processing workflow through AI-driven automation. His expertise in Machine Learning, Deep Learning, and Intelligent Document Processing reduced manual approval effort by 65%, significantly accelerated loan processing, and delivered measurable operational efficiencies. He has a remarkable ability to bridge complex business requirements with practical, scalable AI solutions, making him an invaluable asset to any organization.",
+  name: "Arun Kumar B",
+  role: "Associate Vice President, Digital Transformation & Customer Experience, Fincorp",
+},
+
   {
-    quote: "Arjun is the rare engineer who can architect a streaming pipeline in the morning and fine-tune a transformer by evening. He single-handedly rebuilt our fraud platform and the impact is still compounding.",
-    name: "Priya Raman",
-    role: "Director of Engineering, Fintech",
-  },
-  {
-    quote: "He shipped our RAG copilot from prototype to 1.2k weekly users in 10 weeks. His attention to evaluation rigor changed how our entire ML org thinks about LLM quality.",
-    name: "Daniel Okafor",
-    role: "Head of AI, SaaS Platform",
-  },
-  {
-    quote: "One of the most thoughtful data engineers I've worked with. Arjun made our 12PB lakehouse migration look almost routine — and our finance team noticed first.",
-    name: "Mei Lin Tan",
-    role: "Principal Data Engineer",
-  },
-  {
-    quote: "Beyond the tech depth, Arjun mentors juniors with patience and lifts the whole team. He's a force multiplier on any ML project.",
-    name: "Rahul Verma",
-    role: "Engineering Manager",
-  },
+  quote: "Rohith consistently demonstrated exceptional technical depth and ownership throughout our 4TB enterprise file migration initiative. He architected a scalable event-driven data pipeline using AWS EventBridge and seamlessly integrated it with Salesforce, ensuring reliable and efficient document migration. Beyond his technical expertise in cloud architecture and data engineering, Rohith is a dependable team player who quickly understands business needs and delivers high-quality solutions. He is an outstanding engineer with tremendous potential.",
+  name: "Nilesh Borole",
+  role: "Sr. Manager – DMS & IT Systems, India's Largest Automobile Manufacturer",
+},
+{
+  quote: "Rohith has a unique ability to bridge business challenges with AI-driven solutions. The LLM-powered GenBI assistant he architected transformed how our teams interact with data, automating a significant portion of our reporting and analytics workflows. This enabled us to reduce our dependency on manual Power BI development, allowing our BI team to focus on strategic initiatives while delivering faster insights and improving business decision-making. His expertise in data engineering, Generative AI, and cloud technologies makes him an exceptional engineer.",
+  name: "Abdelaati Elshami",
+  role: "IT Manager, Real Estate & Construction, Saudi Arabia",
+},
+{
+  quote: "I had the opportunity to work with Rohith during product development during my time at Nura Analytics, and he was someone the team could always rely on. His APIs were robust, scalable, and thoughtfully designed, making frontend integration straightforward. He also built well-structured data pipelines that were easy to extend and maintain. What stood out most was his collaborative attitude, he was always ready to discuss ideas, solve problems, and support the team whenever needed.",
+  name: "Hari Prasath S",
+  role: "Senior Frontend Developer, Tricon Infotech",
+},
+{
+  quote: "Working with Rohith has been a great experience. He has a strong foundation in data engineering, cloud platforms, and Generative AI, and consistently applies those skills to solve real business problems. What stands out most is his ability to understand business requirements quickly, design scalable solutions, and execute them with confidence. He's a dependable teammate, always ready to collaborate, share ideas, and take ownership of complex challenges.",
+  name: "Liya T Mathew",
+  role: "Senior Analytics Engineer, Nura Analytics",
+},
+{
+  quote: "I've had the privilege of mentoring Rohith from his early days as a Data Analytics Intern to his current role as an AI/ML Engineer. His growth has been exceptional, driven by curiosity, ownership, and a commitment to continuous learning. Rohith has developed strong expertise in data engineering, cloud technologies, and Generative AI, consistently delivering scalable solutions that address real business challenges. His ability to quickly understand complex requirements, architect practical solutions, and execute them with confidence makes him a valuable asset to any engineering team. Beyond his technical capabilities, he is collaborative, dependable, and always willing to take ownership of challenging initiatives.",
+  name: "Thangabalu Karunanithi",
+  role: "Chief Technology Officer, Nura Analytics",
+},
+{
+  quote: "Although Rohith joined us through a single opportunity, the range of responsibilities he has taken on across multiple projects speaks volumes about his versatility and ability to adapt. From large-scale data engineering and cloud-native architectures to enterprise AI and Generative AI solutions, he has consistently delivered impactful outcomes while maintaining a strong focus on business objectives. Rohith combines technical excellence with ownership, collaboration, and a continuous learning mindset, making him an engineer I can confidently recommend for any high-impact technology role.",
+  name: "Ramachandran Srinivasan",
+  role: "Chief Executive Officer, Nura Analytics",
+}
 ];
 
 function Testimonials() {
   return (
-    <Section id="testimonials" eyebrow="// what teammates say" title="Trusted by peers and leaders" sub="A few words from colleagues I've shipped alongside.">
+    <Section id="testimonials" eyebrow="// Testimonials" title="Perspectives from olleagues, Clients, and Technology leaders.">
       <div className="grid gap-5 md:grid-cols-2">
         {TESTIMONIALS.map((t) => (
           <figure key={t.name} className="glass relative rounded-2xl p-7">
@@ -706,15 +932,16 @@ function Testimonials() {
   );
 }
 
+
 const INTERESTS = [
-  { Icon: BookOpen, title: "Reading ML papers", note: "Weekly arXiv deep-dives" },
-  { Icon: Mountain, title: "Trail running", note: "Half-marathon · 1:42" },
-  { Icon: Camera, title: "Film photography", note: "35mm + medium format" },
-  { Icon: Music, title: "Synthesizers", note: "Modular & ambient sets" },
-  { Icon: Coffee, title: "Espresso geeking", note: "V60 to lever pulls" },
-  { Icon: GitBranch, title: "Open source", note: "Maintain 3 ML utilities" },
-  { Icon: Sparkles, title: "Mentoring", note: "ADPList · 80+ sessions" },
-  { Icon: FlaskConical, title: "Side experiments", note: "Tiny LLM agents" },
+  { Icon: BrainCircuit, title: "Exploring AI Trends", note: "Following the latest GenAI, LLM & Data Engineering innovations" },
+  { Icon: Linkedin, title: "Industry Learning", note: "Keeping up with emerging technologies and engineering leaders on LinkedIn" },
+  { Icon: GraduationCap, title: "Mentoring", note: "Weekend special sessions and career guidance at GUVI" },
+  { Icon: FlaskConical, title: "Side Experiments", note: "Building AI agents, RAG systems & automation projects" },
+  { Icon: Trophy, title: "Sports", note: "Badminton, Chess & Carrom to recharge and stay competitive" },
+  { Icon: Car, title: "Short Drives", note: "Relaxing drives for a cup of tea and fresh perspectives" },
+  { Icon: Popcorn, title: "Movie Buff", note: "Enjoying sci-fi, thrillers and inspiring stories" },
+  { Icon: BookOpen, title: "Continuous Learning", note: "Exploring cloud architectures, distributed systems and ML research" },
 ];
 
 function Interests() {
@@ -796,7 +1023,7 @@ const handleSubmit = async (
 
 function Contact() {
   return (
-    <Section id="contact" eyebrow="// let's talk" title="Have a hard ML problem?" sub="I'm open to senior IC roles, staff-level ML engineering, and selective consulting.">
+    <Section id="contact" eyebrow="// let's talk" title="Building Enterprise AI & Data Solutions?" sub="I'm open to opportunities in AI/ML Engineering, Data Engineering, and Generative AI, where I can design scalable data platforms, intelligent document processing systems, multi-agent AI solutions, and cloud-native architectures that solve real business problems.">
       <div className="grid gap-6 lg:grid-cols-[1fr,1.2fr]">
         <div className="glass rounded-2xl p-7">
           <h3 className="font-display text-lg font-semibold">Direct channels</h3>
@@ -924,7 +1151,7 @@ function Footer() {
     <footer className="border-t border-border bg-surface/40 py-8">
       <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-3 px-4 sm:flex-row">
         <p className="font-mono text-xs text-muted-foreground">
-          © {new Date().getFullYear()} Rohith Vignesh · Built with intent.
+          © {new Date().getFullYear()} Rohith Vignesh · Building AI that delivers business impact.
         </p>
         <div className="flex items-center gap-3 text-muted-foreground">
           <a href="https://github.com/CSRV547" aria-label="GitHub" className="hover:text-primary" target="_blank" rel="noopener noreferrer">
