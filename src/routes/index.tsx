@@ -917,7 +917,10 @@ function Testimonials() {
             <Quote className="h-7 w-7 text-primary/60" />
             <blockquote className="mt-3 text-[15px] leading-relaxed text-foreground">"{t.quote}"</blockquote>
             <figcaption className="mt-5 flex items-center gap-3 border-t border-border pt-4">
-              <span className="grid h-10 w-10 place-items-center rounded-full bg-[var(--gradient-primary)] font-display text-sm font-bold text-primary-foreground">
+             <span
+                className="grid h-10 w-10 place-items-center rounded-full font-display text-sm font-bold text-white"
+                style={{ background: "var(--gradient-primary)" }}
+              >
                 {t.name.split(" ").map((n) => n[0]).join("")}
               </span>
               <div>
