@@ -910,14 +910,17 @@ const TESTIMONIALS = [
 
 function Testimonials() {
   return (
-    <Section id="testimonials" eyebrow="// Testimonials" title="Perspectives from olleagues, Clients, and Technology leaders.">
+    <Section id="testimonials" eyebrow="// Testimonials" title="Perspectives from Colleagues, Clients, and Technology leaders.">
       <div className="grid gap-5 md:grid-cols-2">
         {TESTIMONIALS.map((t) => (
           <figure key={t.name} className="glass relative rounded-2xl p-7">
             <Quote className="h-7 w-7 text-primary/60" />
             <blockquote className="mt-3 text-[15px] leading-relaxed text-foreground">"{t.quote}"</blockquote>
             <figcaption className="mt-5 flex items-center gap-3 border-t border-border pt-4">
-              <span className="grid h-10 w-10 place-items-center rounded-full bg-[var(--gradient-primary)] font-display text-sm font-bold text-primary-foreground">
+              <span
+                className="grid h-10 w-10 place-items-center rounded-full font-display text-sm font-bold text-white"
+                style={{ background: "var(--gradient-primary)" }}
+              >
                 {t.name.split(" ").map((n) => n[0]).join("")}
               </span>
               <div>
